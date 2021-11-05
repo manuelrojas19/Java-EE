@@ -1,2 +1,0 @@
-FROM airhacks/glassfish
-COPY ./target/example1.war ${DEPLOYMENT_DIR}

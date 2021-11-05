@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+/home/manuelr/IBM-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-3916241657.index
-798395194.index
-3451521679.index
-2027634427.index
-1029770060.index
-4277741172.index
-4221425200.index
