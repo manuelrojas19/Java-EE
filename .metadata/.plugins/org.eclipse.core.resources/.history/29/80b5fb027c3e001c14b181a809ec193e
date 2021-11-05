@@ -1,0 +1,5 @@
+package com.manuelr.javaee.todo.service;
+
+public class TodoService {
+
+}

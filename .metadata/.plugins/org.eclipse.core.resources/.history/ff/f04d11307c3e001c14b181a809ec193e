@@ -1,0 +1,14 @@
+package com.manuelr.javaee.todo.service;
+
+import javax.transaction.Transactional;
+
+import com.manuelr.javaee.todo.entity.TodoEntity;
+
+@Transactional
+public class TodoService {
+	
+	public TodoEntity createTodo(TodoEntity todo) {
+		
+	}
+
+}
