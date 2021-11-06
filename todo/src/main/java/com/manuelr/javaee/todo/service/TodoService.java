@@ -10,6 +10,7 @@ import com.manuelr.javaee.todo.entity.TodoEntity;
 
 @Transactional
 public class TodoService {
+	
 	@PersistenceContext
 	EntityManager entityManager;
 	
@@ -28,7 +29,7 @@ public class TodoService {
 	}
 	
 	public List<TodoEntity> getTodos() {
-		return entityManager.createQuery("SELECT t from Todo t", 
+		return entityManager.createQuery("SELECT t from TodoEntity t", 
 				TodoEntity.class).getResultList();
 	}
 }
