@@ -1,5 +1,5 @@
 package com.manuelr.javaee.cdi.interfaces;
 
-public interface salute {
+public interface Salute {
     String salute(String name);
 }
