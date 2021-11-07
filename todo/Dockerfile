@@ -1,2 +1,2 @@
 FROM payara/micro
-COPY ./target/todo.war ${DEPLOYMENT_DIR}
+COPY ./target/todo.war /opt/payara/deployments
