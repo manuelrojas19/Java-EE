@@ -1,5 +1,11 @@
 package com.manuelr.javaee.cdi.beans;
 
+import com.manuelr.javaee.cdi.annotations.Web;
+import com.manuelr.javaee.cdi.scopes.ApplicationScope;
+import com.manuelr.javaee.cdi.scopes.DependentScope;
+import com.manuelr.javaee.cdi.scopes.RequestScope;
+import com.manuelr.javaee.cdi.scopes.SessionScope;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.RequestScoped;
@@ -9,9 +15,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 // custom annotation
+@Web
 public class ScopesBean implements Serializable {
     @Inject
-    private RequestScoped requestScoped;
+    private RequestScope requestScoped;
+
+    @Inject
+    private DependentScope dependentScope;
+
+    @Inject
+    private ApplicationScope applicationScope;
+
+    @Inject
+    private SessionScope sessionScope;
 
     @Inject
     private Logger logger;
