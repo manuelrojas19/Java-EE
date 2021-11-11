@@ -16,6 +16,7 @@ public class TodoService {
 	
 	public TodoEntity createTodo(TodoEntity todo) {
 		entityManager.persist(todo);
+
 		return todo;
 	}
 
