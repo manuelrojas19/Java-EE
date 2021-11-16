@@ -1,6 +1,7 @@
 package com.manuelr.javaee.jpa.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,8 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-@Getter @Setter
+@NamedQuery(name = Department.FIND_ALL, query = "SELECT d FROM Department d")
+@NamedQuery(name = Department.FIND_BY_ID, query = "SELECT d FROM Department d WHERE d.name = :name")
+@NamedQuery(name = Department.FIND_NAMES, query = "SELECT d.name FROM Department d")
+@Getter @Setter @NoArgsConstructor
 public class Department extends AbstractEntity {
+    public static final String FIND_ALL = "Department.findAll";
+    public static final String FIND_BY_ID = "Department.findById";
+    public static final String FIND_BY_NAME = "Department.findByName";
+    public static final String FIND_NAMES = "Department.findNames";
+
     @NotEmpty(message = "Name must be set")
     private String name;
 

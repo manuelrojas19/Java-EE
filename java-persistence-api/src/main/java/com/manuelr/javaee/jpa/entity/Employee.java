@@ -1,6 +1,7 @@
 package com.manuelr.javaee.jpa.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.json.bind.annotation.JsonbDateFormat;
@@ -17,8 +18,20 @@ import java.util.Map;
 import java.util.Set;
 
 @Entity
-@Getter @Setter
+@NamedQuery(name = Employee.FIND_ALL, query = "SELECT e from Employee e")
+@NamedQuery(name = Employee.FIND_BY_ID, query = "SELECT e FROM Employee e WHERE e.id = :id")
+@NamedQuery(name = Employee.FIND_ALL_PARKING_SPACES, query = "SELECT e.parkingSpace FROM Employee e")
+@NamedQuery(name = Employee.CONSTRUCTOR_PROJECTION, query = "SELECT new " +
+        "com.manuelr.javaee.jpa.entity.EmployeeDetails(e.name, e.lastName, e.basicSalary) FROM Employee e")
+@NamedQuery(name = Employee.FIND_ALL_PARKING_SPACES, query = "SELECT ea FROM Employee e JOIN e.allowances ea")
+@Getter @Setter @NoArgsConstructor
 public class Employee extends AbstractEntity {
+    public static final String FIND_ALL = "Employee.findAll";
+    public static final String FIND_BY_ID = "Employee.findById";
+    public static final String FIND_ALL_PARKING_SPACES = "Employee.findAllParkingSpaces";
+    public static final String CONSTRUCTOR_PROJECTION = "Employee.findDetails";
+    public static final String FIND_EMPLOYEE_ALLOWANCES = "Employee.findAllowances";
+
     @NotEmpty(message = "Name cannot be empty")
     private String name;
 
@@ -91,10 +104,10 @@ public class Employee extends AbstractEntity {
     private List<String> pronouns;
 
 
-    @OneToOne(mappedBy = "employee", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private ParkingSpace parkingSpace;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Allowance> allowances;
 
     @ElementCollection
