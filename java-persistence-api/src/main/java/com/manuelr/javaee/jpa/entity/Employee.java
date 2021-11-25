@@ -23,7 +23,7 @@ import java.util.Set;
 @NamedQuery(name = Employee.FIND_ALL_PARKING_SPACES, query = "SELECT e.parkingSpace FROM Employee e")
 @NamedQuery(name = Employee.CONSTRUCTOR_PROJECTION, query = "SELECT new " +
         "com.manuelr.javaee.jpa.entity.EmployeeDetails(e.name, e.lastName, e.basicSalary) FROM Employee e")
-@NamedQuery(name = Employee.FIND_ALL_PARKING_SPACES, query = "SELECT ea FROM Employee e JOIN e.allowances ea")
+@NamedQuery(name = Employee.FIND_EMPLOYEE_ALLOWANCES, query = "SELECT ea FROM Employee e JOIN e.allowances ea")
 @Getter @Setter @NoArgsConstructor
 public class Employee extends AbstractEntity {
     public static final String FIND_ALL = "Employee.findAll";

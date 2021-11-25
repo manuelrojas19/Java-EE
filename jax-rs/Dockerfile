@@ -1,2 +1,3 @@
-FROM airhacks/glassfish
-COPY ./target/jax-rs.war ${DEPLOYMENT_DIR}
+FROM payara/micro
+COPY ./target/jax-rs.war /opt/payara/deployments
+
